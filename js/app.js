@@ -48,13 +48,6 @@ $(document).ready(function () {
     $('#cart-popup').on('click', function () {
         $('.user-cart-modal').css('display', 'block');
 
-
-        // $('.remove-cart-item').on('click', function (event) {
-        //     console.log(event);
-        //     if (Cart.items.count === 1) {
-        //         console.log('dfewfweff')
-        //     }
-        // });
     });
 
 

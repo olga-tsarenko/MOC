@@ -60,17 +60,20 @@ function RenderCart() {
 
             $(myRenderCart.defaultTemplateCart).appendTo(myCartList);
 
-
             $(".remove-cart-item").on('click', function (event) {
                 console.log(event)
+                var reduce = Cart.items.filter(function (r) {
+                    return r.id == event.target.attributes["data-id"].value;
+                })[0];
 
-
+                // Cart.RemoveCart(reduce);
             });
         });
 
-
         $('.cart-total-amount').append('<p>' + Cart.totalAmount + '</p>');
     });
+
+
 
 };
 

@@ -16,8 +16,11 @@
         if (itemID == -1) {
             product.count = 1;
             this.items.push(product);
+
         } else {
+            alert('This Product is already in Your Cart! Add one more?')
             product.count += 1;
+
         }
 
         this.items.forEach((item) => {
@@ -29,19 +32,16 @@
 
 
     Cart.prototype.RemoveCart = function (product) {
-        // console .log(product);
         itemID = this.items.findIndex((currentProduct) => {
-
             return currentProduct.id === product.id;
-
         });
 
-        if (itemID !==-1) {
-            console.log(product);
-            product.count -= 1;
+        if (itemID == 0) {
+            console.log('rere')
+            this.items.splice(itemID, 1);
 
         } else {
-            this.items.slice(product, 0);
+            product.count -= 1;
         }
 
         this.items.forEach((item) => {

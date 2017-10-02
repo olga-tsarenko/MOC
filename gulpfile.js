@@ -30,7 +30,7 @@ gulp.task('js', function() {
         .pipe(plumber({ errorHandler: handleError }))
         .pipe(sourcemaps.init())
         .pipe(babel({compact: true}))
-        .pipe(concat('main.js'))
+
         .pipe(uglify())
         .pipe(sourcemaps.write())
         .pipe(gulp.dest('./js'));
