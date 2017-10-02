@@ -1,0 +1,11 @@
+footer{
+
+  border-top: 1px solid lightgrey;
+}
+.foot{
+  @include clearfix;
+  padding: 25px 0;
+  .copyright{
+    float: right;
+  }
+}
