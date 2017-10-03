@@ -36,43 +36,53 @@ function renderProducts() {
 }
 
 
-function RenderCart() {
+var RenderCart = function () {
 
-    $('#cart-popup').on('click', function () {
 
-        var myCartList = $('.cart-added-list');
-        var MyRenderCart;
+    var myCartList = $('.cart-added-list');
+    var MyRenderCart;
 
-        TemplateCart = function (defaultTemplateCart) {
-            this.defaultTemplateCart = defaultTemplateCart
-        };
+    TemplateCart = function (defaultTemplateCart) {
+        this.defaultTemplateCart = defaultTemplateCart
+    };
 
-        Cart.items.forEach(function (item) {
-            var newPrice = item.count * item.price;
-            var myRenderCart = new TemplateCart(
-                '<li class="cart-added-list-item">'
-                + "<div class='remove-cart-item' data-id=" + item.id + " ></div>"
-                + "<a href='#' class='item-title'>" + item.title + "</a>"
-                + "<div class='count-selected-items'>" + item.count + "</div>"
-                + "<div class='cart-item-price'>" + newPrice + "</div>"
-                + "</li>"
-            );
+    Cart.items.forEach(function (item) {
+        var newPrice = item.count * item.price;
+        var myRenderCart = new TemplateCart(
+            '<li id=' + item.id + '  class="cart-added-list-item">'
+            + "<div class='remove-cart-item' data-id=" + item.id + " ></div>"
+            + "<a href='#' class='item-title'>" + item.title + "</a>"
+            + "<div class='count-selected-items'>" + item.count + "</div>"
+            + "<div class='cart-item-price'>" + newPrice + "</div>"
+            + "</li>"
+        );
 
-            $(myRenderCart.defaultTemplateCart).appendTo(myCartList);
+        $(myRenderCart.defaultTemplateCart).appendTo(myCartList);
 
-            $(".remove-cart-item").on('click', function (event) {
-                console.log(event)
-                var reduce = Cart.items.filter(function (r) {
-                    return r.id == event.target.attributes["data-id"].value;
-                })[0];
 
-                // Cart.RemoveCart(reduce);
-            });
-        });
-
-        $('.cart-total-amount').append('<p>' + Cart.totalAmount + '</p>');
     });
 
+    $(".remove-cart-item").on('click', function (event) {
+        console.log(event);
+        var reduce = Cart.items.filter(function (r) {
+            return r.id == event.target.attributes["data-id"].value;
+        })[0];
+
+        console.log(reduce.id);
+        var elem = reduce.id;
+
+        var itemRemoveID = document.getElementById(elem);
+
+        console.log(itemRemoveID);
+
+        Cart.RemoveCart(reduce);
+
+        $(itemRemoveID).remove();
+
+        $('.cart-total-amount').text(Cart.totalAmount)
+    });
+
+    $('.cart-total-amount').append('<p>' + Cart.totalAmount + '</p>');
 
 
 };
