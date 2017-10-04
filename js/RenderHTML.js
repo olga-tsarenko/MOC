@@ -1,5 +1,5 @@
 function renderProducts() {
-    var mylist = $('.catalog-item-block');
+        var mylist = $('.catalog-item-block');
     var MyRender;
     var noImage = "http://telegram.org.ru/uploads/posts/2017-03/1490220314_4.png";
 
@@ -19,11 +19,11 @@ function renderProducts() {
             '<li class="catalog-item">'
             + "<ul class='owl-carousel owl-theme'>" + images + "</ul>"
             + "<div class='block-desctiption'>"
-            + "<div class='item-title'> " + item.title + "</div>"
-            + "<div class='item-description'></div>"
+            + "<h2 class='item-title'> " + item.title + "</h2>"
+            + "<div class='item-description'>"  + item.description + "</div>"
             + "<div class='item-price-block'>"
-            + "<div class='item-price'></div>"
-            + "<div class='add-to-cart' data-id=" + item.id + " ></div>"
+            + "<div class='item-price'> " + item.price + "</div>"
+            + "<div class='add-to-cart' data-id=" + item.id + "> add to cart</div>"
             + "</div>"
             + "</div>"
             + "</li>"
@@ -31,7 +31,6 @@ function renderProducts() {
         ;
         $(myRender.defaultTemplate).appendTo(mylist)
     });
-
 
 }
 
@@ -47,7 +46,7 @@ var RenderCart = function () {
     };
 
     Cart.items.forEach(function (item) {
-        var newPrice = item.count * item.price;
+        var newPrice = (item.count * item.price).toFixed(2);
         var myRenderCart = new TemplateCart(
             '<li id=' + item.id + '  class="cart-added-list-item">'
             + "<div class='remove-cart-item' data-id=" + item.id + " ></div>"
@@ -75,14 +74,16 @@ var RenderCart = function () {
 
         console.log(itemRemoveID);
 
-        Cart.RemoveCart(reduce);
+        Cart.RemoveCartItem(reduce);
 
         $(itemRemoveID).remove();
 
-        $('.cart-total-amount').text(Cart.totalAmount)
+        $('.cart-total-amount').text( (Cart.totalAmount).toFixed(2))
     });
 
-    $('.cart-total-amount').append('<p>' + Cart.totalAmount + '</p>');
+    $('.cart-total-amount').append('<p>' + (Cart.totalAmount).toFixed(2) + '</p>');
+
+
 
 
 };

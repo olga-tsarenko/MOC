@@ -1,18 +1,21 @@
 $(document).ready(function () {
     $('#cart-popup').on('click', function () {
-        $('.user-cart-modal').css('display', 'block');
+        $('.user-cart-modal').css('display', 'flex');
+        RenderCart()
     });
 
-    $('#cart-popup').on('click', RenderCart)
+    // $('#cart-popup').on('click', RenderCart);
 
 
     $('.close-popup').on('click', function (event) {
         $('.user-cart-modal').css('display', 'none');
         $('.cart-added-list').empty();
+        $('.cart-total-amount').empty();
     });
 
 
     $('.cart-block').mouseenter(function () {
+        $('.cart-tooltip p').text(Cart.items.length);
         $('.cart-tooltip').css('display', 'flex').animate({opacity: 1}, 700);
 
         $('.cart-block').mouseleave(function () {
@@ -22,12 +25,14 @@ $(document).ready(function () {
 
     function owlInit() {
         $('.owl-carousel').owlCarousel({
-            loop: true,
-            margin: 10,
+            margin: 0,
+            loop:true,
             nav: true,
             dots: false,
             items: 1
         });
+        $('.owl-prev').empty();
+        $('.owl-next').empty();
     };
 
     function AddToCartEvent() {
@@ -39,7 +44,7 @@ $(document).ready(function () {
             Cart.addToCart(product);
 
         });
-    }
+    };
 
 
     ProductsService.fetchProducts().then(renderProducts).then(owlInit).then(AddToCartEvent);

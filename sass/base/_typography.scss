@@ -1,0 +1,46 @@
+.wrapper{
+  font-family: 'Roboto Slab', serif;
+  font-size: 14px;
+}
+h1 {
+  font-family: 'Pangolin', cursive;
+  font-size: 56px;
+}
+
+.item-title {
+  font-size: 25px;
+  font-family: 'Pangolin', cursive;
+}
+
+.add-to-cart {
+    font-family: 'Pangolin', cursive;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.item-price{
+  font-size: 25px;
+  font-family: 'Pangolin', cursive;
+}
+
+.cart-modal-wrap{
+  h2{
+    font-family: 'Pangolin', cursive;
+    font-size:25px;
+  }
+  .item-title{
+    font-size: 20px;
+  }
+  .cart-item-price{
+    font-size: 20px;
+    text-align: left;
+  }
+  .count-selected-items{
+    font-size: 20px;
+  }
+}
+.cart-total-amount{
+  p{
+    font-size: 23px;
+  }
+}

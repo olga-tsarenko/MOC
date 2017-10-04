@@ -4,9 +4,9 @@
         this.items = [];
 
     };
-    var TotalItemValue;
 
-    var y = 0;
+    var StartCount;
+
     Cart.prototype.addToCart = function (product) {
         // console .log(product);
         itemID = this.items.findIndex((currentProduct) => {
@@ -20,45 +20,44 @@
 
 
         } else {
-            // alert('This Product is already in Your Cart! Add one more?')
+            alert('This Product is already in Your Cart! Add one more?')
             product.count += 1;
 
         }
-
+        var StartCount = 0;
         this.items.forEach((item) => {
+            StartCount += (item.price * item.count * 100);
+            console.log(StartCount);
 
-            var b = parseFloat(item.price);
+        });
+        this.totalAmount = (StartCount) / 100;
+    };
 
-            x = (b * item.count);
-            console.log(x);
-            z= (y += x);
-            console.log(z);
-            this.totalAmount = z ;
+
+    Cart.prototype.RemoveCartItem = function (product) {
+        itemID = this.items.findIndex((currentProduct) => {
+            return currentProduct.id === product.id;
         });
 
+        this.items.splice(itemID, 1);
+        if (!Cart.items.length) {
+            this.totalAmount = 0;
+        }
+        else {
+            var StartCount = 0;
+            this.items.forEach((item) => {
+                StartCount += (item.price * item.count * 100);
+                console.log(StartCount);
 
+            });
+            this.totalAmount = (StartCount) / 100;
+        }
 
     };
 
-    //
-    // Cart.prototype.RemoveCart = function (product) {
-    //     itemID = this.items.findIndex((currentProduct) => {
-    //         return currentProduct.id === product.id;
-    //     });
-    //
-    //     this.items.splice(itemID, 1);
-    //     if (!Cart.items.length) {
-    //         this.totalAmount = 0;
-    //     }
-    //     else {
-    //         this.items.forEach((item) => {
-    //             this.totalAmount -= (item.price * item.count);
-    //         });
-    //     }
-    //
-    // };
-
     this.Cart = new Cart();
+
+
 
 })();
 
