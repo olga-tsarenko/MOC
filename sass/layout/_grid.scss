@@ -1,6 +1,5 @@
 .wrapper {
   margin: 0;
-  padding: 0 10px;
 }
 
 .container {
@@ -50,5 +49,13 @@ a {
     background-repeat: no-repeat;
     background-position: 50% 50%;
     background-size: cover;
+  }
+}
+
+button{
+  background-color: transparent;
+  border: none;
+  &:focus{
+    outline: none;
   }
 }

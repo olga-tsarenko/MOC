@@ -23,7 +23,6 @@
 
     ProductsService.prototype.fetchProducts = function () {
         return $.ajax(REQUEST_OPTIONS).then((data) => {
-            // console.log("RESPONS", data);
 
             data.products.forEach((productData) => {
                 this.products.push(new Product(productData));
